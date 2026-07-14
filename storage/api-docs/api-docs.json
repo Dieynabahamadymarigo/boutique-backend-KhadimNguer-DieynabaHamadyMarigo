@@ -1,0 +1,171 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "API REST - Catégories, Produits et Acheteurs",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Serveur local"
+        }
+    ],
+    "paths": {
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Lister les catégories",
+                "description": "Display a listing of the resource.",
+                "operationId": "d753b5a85d077f3a311df9eb28de8a1a",
+                "responses": {
+                    "200": {
+                        "description": "Liste des catégories"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Créer une catégorie",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "1d6b893ef899e2aecece0a5e18049d8a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom"
+                                ],
+                                "properties": {
+                                    "nom": {
+                                        "type": "string",
+                                        "example": "Café"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Une catégorie pour les produits de café"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Catégorie créée"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            }
+        },
+        "/api/categories/{categorie}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Détails d'une catégorie avec ses produits",
+                "description": "Display the specified resource.",
+                "operationId": "204f07a46403659f3e16a6e06e95dcf1",
+                "parameters": [
+                    {
+                        "name": "categorie",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Catégorie trouvée"
+                    },
+                    "404": {
+                        "description": "Catégorie non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Mettre à jour une catégorie",
+                "description": "Update the specified resource in storage.",
+                "operationId": "f0ae08633275192b3fe68efa358b9abd",
+                "parameters": [
+                    {
+                        "name": "categorie",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Catégorie mise à jour"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Supprimer une catégorie",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "21fd49657c7df227ca3dd53c5371f438",
+                "parameters": [
+                    {
+                        "name": "categorie",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Catégorie supprimée"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Categories",
+            "description": "Gestion des catégories de produits"
+        }
+    ]
+}
