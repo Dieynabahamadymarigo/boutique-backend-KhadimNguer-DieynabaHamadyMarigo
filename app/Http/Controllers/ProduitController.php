@@ -14,7 +14,7 @@ class ProduitController extends Controller
     //CRUD des produits
     public function index():View
     {
-        // Logique pour afficher la liste des produits
+        // liste des produits, triés par nom
         $produits = Produit::with('categorie')->orderBy('nom')->get();
 
         return view('produits.index', ['produits' => $produits]);

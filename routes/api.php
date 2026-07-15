@@ -16,13 +16,13 @@ Route::get('/user', function (Request $request) {
 
 
 //category
-Route::apiResource('categories', CategorieController::class)->parameters(['categories' => 'categorie']);
+// Route::apiResource('categories', CategorieController::class)->parameters(['categories' => 'categorie']);
 
 //Product
-Route::apiResource('produits', ProduitController::class);
+// Route::apiResource('produits', ProduitController::class);
 
 // Client
-Route::apiResource('acheteurs', AcheteurController::class);
+// Route::apiResource('acheteurs', AcheteurController::class);
 
 // Permet d'enregistrer un achat
-Route::post('/acheteurs/{acheteur}/acheter', [AcheteurController::class, 'acheter'])->name('api.acheteurs.acheter');
+// Route::post('/acheteurs/{acheteur}/acheter', [AcheteurController::class, 'acheter'])->name('api.acheteurs.acheter');
