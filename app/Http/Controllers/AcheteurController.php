@@ -17,8 +17,9 @@ class AcheteurController extends Controller
     public function index():View
     {
         $acheteurs = Acheteur::query()->orderBy('nom')->get();
+        $produits = Produit::orderBy('nom')->get();
 
-        return view('acheteurs.index', ['acheteurs' => $acheteurs]);
+        return view('acheteurs.index', ['acheteurs' => $acheteurs, 'produits' =>$produits]);
     }
 
     // Affichage du formulaire de création.
@@ -94,6 +95,6 @@ class AcheteurController extends Controller
         // insert into pivot table acheteur_produit
         $acheteur->produits()->attach($validated['produit_id'], ['quantite' => $validated['quantite'], 'date_achat' => $validated['date_achat']]);
 
-        return Redirect::route('acheteurs.show', $acheteur)->with('success', 'Achat enregistré.');
+        return Redirect::route('acheteurs.index')->with('success', 'Achat enregistré.');
     }
 }

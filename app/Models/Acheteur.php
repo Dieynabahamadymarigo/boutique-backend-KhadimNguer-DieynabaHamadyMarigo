@@ -12,7 +12,7 @@ class Acheteur extends Model
     // Un acheteur peut acheter plusieurs produits
     public function produits()
     {
-        return $this->belongsToMany(Produit::class)
+        return $this->belongsToMany(Produit::class, 'acheteur_produits', 'acheteurs_id', 'produits_id')
             ->withPivot('quantite', 'date_achat')
             ->withTimestamps();
     }
