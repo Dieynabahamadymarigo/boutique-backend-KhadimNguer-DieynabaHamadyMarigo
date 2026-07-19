@@ -12,6 +12,6 @@ class Categorie extends Model
     // Une catégorie peut avoir plusieurs produits
     public function produits()
     {
-        return $this->hasMany(Produit::class);
+        return $this->hasMany(Produit::class, 'categories_id');
     }
 }

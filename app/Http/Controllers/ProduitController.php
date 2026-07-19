@@ -16,8 +16,9 @@ class ProduitController extends Controller
     {
         // liste des produits, triés par nom
         $produits = Produit::with('categorie')->orderBy('nom')->get();
+        $categories = Categorie::orderBy('nom')->get();
 
-        return view('produits.index', ['produits' => $produits]);
+        return view('produits.index', ['produits' => $produits, 'categories' => $categories,]);
     }
 
     // Affiche le formulaire de création d'un produit.
@@ -38,7 +39,7 @@ class ProduitController extends Controller
             'prix' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'description' => ['nullable', 'string'],
-            'categorie_id' => ['required', 'exists:categories,id'],
+            'categories_id' => ['required', 'exists:categories,id'],
         ]);
 
         Produit::create($validated);
@@ -72,7 +73,7 @@ class ProduitController extends Controller
             'prix' => ['required', 'numeric', 'min:0'],
             'stock' => ['required', 'integer', 'min:0'],
             'description' => ['nullable', 'string'],
-            'categorie_id' => ['required', 'exists:categories,id'],
+            'categories_id' => ['required', 'exists:categories,id'],
         ]);
 
         $produit->update($validated);

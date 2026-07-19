@@ -13,16 +13,16 @@
     <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Accueil</a>
+          <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page" href="{{ route('home') }}">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('categories.index') }}">Catégories</a>
+          <a class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}" aria-current="page" href="{{ route('categories.index') }}">Catégories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('produits.index') }}">Produits</a>
+          <a class="nav-link {{ request()->routeIs('produits.*') ? 'active' : '' }}" aria-current="page" href="{{ route('produits.index') }}">Produits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('acheteurs.index') }}">Acheteurs</a>
+          <a class="nav-link {{ request()->routeIs('acheteurs.*') ? 'active' : '' }}" aria-current="page" href="{{ route('acheteurs.index') }}">Acheteurs</a>
         </li>
       </ul>
       <ul class="navbar-nav">
