@@ -50,13 +50,20 @@ body {
 .logo {
     height: 60px;
 }
-.navbar-collapse ul:last-child{
+.userNotConnected{
     background-color: var(--secondary-color);
     padding: 2px 12px;
     border-radius: 50px;
+    /* border: 2px solid var(--primary-color); */
+    /* color: var(--white-color); */
 }
-.navbar-collapse ul:last-child:active{
+.userNotConnected:active{
     background-color: var(--primary-color);
+}
+/* userConnected */
+.userConnected button:hover{
+    background-color: var(--primary-color);
+    color: var(--white-color);
 }
 .navbar-nav {
     gap: 20px;
@@ -137,4 +144,133 @@ body {
     border: 1px solid var(--secondary-color);
     outline:var(--primary-color);
     box-shadow: none !important;
+}
+
+/* Login */
+.cards{
+    background-color: var(--gray-color);
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px 2px var(--primary-color);
+    /* max-width: 700px; */
+    width: 75%;
+}
+.logoLogin img{
+    height: 100px;
+    object-fit: cover;
+    margin-top: 20px;
+    /* border: 2px solid black; */
+}
+.imgLogin{
+    height: 550px;
+    object-fit: cover;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    display: block;
+}
+.imgLoginResponsive {
+    display: none;
+}
+.imgRegister{
+    height: 600px;
+    object-fit: cover;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    display: block;
+}
+.titleLogin a.active,
+.titleLogin a:hover {
+    padding-bottom: 3px;
+    border-bottom: 3px solid transparent;
+    transition: .3s;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.loginInput {
+    border-radius: 30px;
+}
+.loginInput .form-floating {
+    border-radius: 10px;
+    overflow: hidden;
+    /* box-shadow: 2px 2px var(--secondary-color); */
+    border-top: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+}
+.loginInput .form-floating .block {
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 0.35rem 0.75rem !important;
+    font-size: 14px !important;
+}
+.loginInput .form-floating>label {
+    padding: 0.35rem 0.75rem !important;
+    font-size: 14px !important;
+}
+.rememberMe, .rememberMe input{
+    font-size: 12px;
+}
+.rememberMe a{
+    color: var(--primary-color);
+}
+.buttonLogin button{
+    background-color: var(--primary-color);
+    padding: 8px 80px;
+    color: var(--white-color);
+    border: none;
+    border-radius: 20px;
+
+}
+
+/* MEDIA  */
+/* tablette */
+@media screen and (max-width: 767px) {
+    .cards{
+        /* max-width: 900px !important; */
+        width: 500px;
+        height: 900px;
+        }
+    .logoLogin img {
+            display: none;
+            }
+    .titleLogin{
+        margin-top: 40px !important;
+    }
+    .loginInput{
+        /* margin-top: 10px !important; */
+        /* border: 2px solid black; */
+    }
+    .imgLogin, .imgRegister {
+            display: none;
+        }
+
+    .imgLoginResponsive{
+            height: 400px !important;
+            object-fit: cover;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            display: block;
+        }
+
+
+}
+
+/* mobil */
+@media screen and (max-width: 575px) {
+    .cards{
+        /* max-width: 900px !important; */
+        width: 300px;
+        height: 800px;
+        }
+    .titleLogin{
+        margin-top: 20px !important;
+    }
+    .loginInput{
+        margin-top: -10px !important;
+        /* border: 2px solid black; */
+    }
+    .imgLoginResponsive{
+            height: 400px !important;
+        }
+
+
 }
