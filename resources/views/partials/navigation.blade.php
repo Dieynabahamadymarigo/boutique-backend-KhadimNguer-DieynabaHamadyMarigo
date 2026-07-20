@@ -26,9 +26,39 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link text-white text-center" href="   ">Connexion</a>
+        @auth
+        <li class="nav-item dropdown userConnected">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{Auth::user()->name}}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+                <form action="{{ route('logout') }}" method="post" style="display:inline">
+                @csrf
+                <button class="dropdown-item" type="submit" >
+                <i class="bi bi-box-arrow-left me-2"></i> Déconnexion
+                </button>
+                </form>
+            </li>
+            <li>
+                <button onclick="{{route('profile.edit')}}" class="dropdown-item" type="button">
+                    {{-- <a href="{{route('profile.edit')}}" class=" text-decoration-none text-dark"> --}}
+                        <i class="bi bi-person me-2"></i>Profil
+                    {{-- </a> --}}
+                </button>
+            </li>
+          </ul>
         </li>
+        {{-- <span>{{Auth::user()->name}} </span>
+        <form action="{{ route('logout') }}" method="post" style="display:inline">
+            @csrf
+            <button type="submit">Déconnexion</button>
+        </form> --}}
+        @else
+        <li class="nav-item userNotConnected">
+          <a class="nav-link text-white text-center" href="{{route('login')}}">Connexion</a>
+        </li>
+        @endauth
       </ul>
     </div>
   </div>
