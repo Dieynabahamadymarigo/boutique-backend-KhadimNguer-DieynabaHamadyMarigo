@@ -6,15 +6,18 @@
 
     <div class="page-title container mt-3 mb-3">
         <h1 class="text-primary"><i class="bi bi-person me-2"></i>Acheteurs</h1>
+        {{-- Vérification des roles --}}
+        @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin'])  )
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAcheteur">
         <i class="bi bi-plus me-2"></i> Ajouter
         </button>
+        @endif
     </div>
     {{-- <a href="{{ route('acheteurs.create') }}" class="btn btn-primary mb-3">Ajouter un acheteur</a> --}}
 
     {{-- Vérification si la collection est vide --}}
     @if($acheteurs->isEmpty())
-        <p>😞 Aucun acheteur disponible.</p>
+        <p class="container fs-5 mt-2">😞 Aucun acheteur disponible.</p>
     @else
     <div class="table-responsive container">
         <table class="table table-hover table-bordered mx-auto">
@@ -37,6 +40,7 @@
                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailAcheteur{{$acheteur->id}}">
                                 <i class="bi bi-eye"></i>
                                 </button>
+                                @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin'])  )
                                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateAcheteur{{$acheteur ->id}}">
                                 <i class="bi bi-pencil"></i>
                                 </button>
@@ -46,6 +50,7 @@
                                     @method('DELETE')
                                     <button type="button" class="btn btn-primary btn-delete" ><i class="bi bi-trash"></i></button>
                                 </form>
+                                @endif
                             </div>
 
                         </td>
@@ -134,8 +139,12 @@
                 @else
                     <ul>
                     @foreach($acheteur->produits as $produit)
-                        <li>
-                            <a href="{{route('produits.show',$produit)}}">{{ $produit->nom }}</a>
+                        <li class="text-primary " style="list-style: none">
+                            <a class="icon-link icon-link-hover text-decoration-none text-primary" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{route('produits.show',$produit)}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+                            </svg>
+                                {{ $produit->nom }}</a>
                             - {{ $produit->pivot->quantite }} unité(s)
                             - {{ $produit->pivot->date_achat }}
                         </li>

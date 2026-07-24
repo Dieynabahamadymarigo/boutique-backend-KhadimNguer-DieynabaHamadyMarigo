@@ -49,17 +49,21 @@
 
     <body>
 
-        {{-- le menu --}}
+        {{-- le menu doit doit pas s'afficher dans ces pages --}}
+        @unless (request()->routeIs(['login','register','forgot-password']))
+        {{-- le menu sera affiche dans les autres pages sauf le unless  --}}
         <header>
             @include('partials.navigation')
         </header>
+
+        @endunless
 
         {{-- le contenu de la page --}}
         <main>
             {{-- Le message de succès de -> with --}}
             @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+                <div class="alert alert-success container">
+                    <i class="bi bi-check-all me-2"></i>{{ session('success') }}
                 </div>
             @endif
 

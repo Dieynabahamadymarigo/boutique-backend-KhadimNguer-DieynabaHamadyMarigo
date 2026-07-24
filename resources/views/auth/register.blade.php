@@ -1,6 +1,9 @@
 {{-- <x-guest-layout> --}}
-
 @extends('layouts.app')
+
+@section('title', 'Connexion')
+
+@section('content')
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -37,10 +40,13 @@
                     <i class="bi bi-person"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="name" class="block form-control" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="Nom" />
-                    <x-input-label for="name" :value="__('Nom')" />
+                    <input id="name" class="block form-control" type="text" name="name" :value="old('name')" required autofocus placeholder="Nom" />
+                    <label for="name">
+                        Nom
+                    </label>
                 </div>
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                @error('name')<p>{{$message}} </p> @enderror
+
             </div>
 
             <!-- Email Address -->
@@ -49,11 +55,16 @@
                     <i class="bi bi-envelope"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="email" class="block form-control" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Email" />
-                    <x-input-label for="email" :value="__('Email')" />
+                    <input id="email" class="block form-control" type="email" name="email" :value="old('email')" required autocomplete="username" placeholder="Email" />
+                    <label for="email">
+                        Email
+                    </label>
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
+            <small>
+                @error('email')<p class=" text-danger m-5"><i class="bi bi-exclamation-circle me-2"></i>{{$message}} </p>@enderror
+            </small>
+
 
             <!-- Password -->
             <div class="input-group loginInput mb-3">
@@ -61,12 +72,18 @@
                     <i class="bi bi-lock"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="password" class="block form-control" type="password" name="password" required autocomplete="new-password" placeholder="Mot de passe" />
-                    <x-input-label for="password" :value="__('Mot de passe')" />
+                    <input id="password" class="block form-control" type="password" name="password" required autocomplete="new-password" placeholder="Mot de passe" />
+                    <label for="password">
+                        Mot de passe
+                    </label>
                 </div>
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
+            <small>
+                @error('password')
+                <p class="text-danger m-5"><i class="bi bi-exclamation-circle me-2"></i>{{$message}} </p>
+                @enderror
+            </small>
+
 
             <!-- Confirm Password -->
             <div class="input-group loginInput mb-3">
@@ -74,23 +91,24 @@
                     <i class="bi bi-lock"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="password_confirmation" class="block form-control" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Nouveau Mot de passe" />
-                    <x-input-label for="password_confirmation" :value="__('Confirmer le Mot de passe')" />
+                    <input id="password_confirmation" class="block form-control" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Nouveau Mot de passe" />
+                    <label for="password_confirmation">
+                        Confirmer le Mot de passe
+                    </label>
                 </div>
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+            <small>
+                @error('password_confirmation')<p class=" text-danger m-5"><i class="bi bi-exclamation-circle me-2"></i>{{$message}} </p> @enderror
+
+            </small>
 
             <div class="mt-5 d-flex justify-content-center buttonLogin">
                 {{-- <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a> --}}
                 <button type="submit" class="ms-3">
-                    {{ __('Register') }}
+                    S'inscrire
                 </button>
-                {{-- <x-primary-button class="ms-4">
-                    {{ __('Register') }}
-                </x-primary-button> --}}
             </div>
         </form>
         {{-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> --}}
@@ -98,6 +116,8 @@
     </div>
   </div>
 </div>
+
+@endsection
 {{--
     <form method="POST" action="{{ route('login') }}">
         @csrf

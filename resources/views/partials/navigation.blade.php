@@ -40,13 +40,17 @@
                 </button>
                 </form>
             </li>
-            <li>
-                <button onclick="{{route('profile.edit')}}" class="dropdown-item" type="button">
-                    {{-- <a href="{{route('profile.edit')}}" class=" text-decoration-none text-dark"> --}}
-                        <i class="bi bi-person me-2"></i>Profil
-                    {{-- </a> --}}
+            @if(auth()->check() && in_array(auth()->user()->role, ['admin'])  )
+            <li class="users">
+                <button>
+                    <a href="{{route('users.index')}}" class="dropdown-item">
+                    <i class="bi bi-person me-2"></i>Utilisateurs
+                    </a>
                 </button>
+                    {{-- <a href="{{route('profile.edit')}}" class=" text-decoration-none text-dark"> --}}
+                    {{-- </a> --}}
             </li>
+            @endif
           </ul>
         </li>
         {{-- <span>{{Auth::user()->name}} </span>
