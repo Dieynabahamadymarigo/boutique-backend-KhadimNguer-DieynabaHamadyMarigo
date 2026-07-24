@@ -12,7 +12,7 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Affiche le formulaire de connexion. Middleware guest: redirige si déjà connecté
      */
     public function create(): View
     {
@@ -20,19 +20,38 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Traite la soumission du formulaire de connexion
      */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+    public function store(Request $request): RedirectResponse{
+        // valide email + password
+        $credentials=$request->validate([
+            'email'=>['required','email'],
+            'password'=>['required'],
+        ]);
 
-        $request->session()->regenerate();
+        // Regenere la session si succès
+        if(Auth::attempt($credentials, $request->boolean('remember'))){
+            $request->session()->regenerate();
 
-        return redirect()->intended(route('home', absolute: false));
+            return redirect()->intended(route('home'));
+        }
+
+        // Echec -> retour avec erreur
+        return back()->withErrors([
+            'email'=>'Identifiants incorrects',
+        ])->onlyInput('email');
     }
+    // public function store(LoginRequest $request): RedirectResponse
+    // {
+    //     $request->authenticate();
+
+    //     $request->session()->regenerate();
+
+    //     return redirect()->intended(route('home', absolute: false));
+    // }
 
     /**
-     * Destroy an authenticated session.
+     * Deconnexion
      */
     public function destroy(Request $request): RedirectResponse
     {

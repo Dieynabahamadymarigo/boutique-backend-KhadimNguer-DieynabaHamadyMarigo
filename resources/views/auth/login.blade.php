@@ -1,6 +1,10 @@
 {{-- <x-guest-layout> --}}
-
 @extends('layouts.app')
+
+@section('title', 'Connexion')
+
+@section('content')
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -10,8 +14,7 @@
       <img src="{{ asset('images/login.jpg') }}" class="img-fluid imgLogin" alt="...">
       <img src="{{ asset('images/loginResponsive.png') }}" class="img-fluid imgLoginResponsive" alt="...">
     </div>
-    {{-- <div class="col-md-6">
-    </div> --}}
+
     <div class="col-md-6">
       <div class="card-body">
 
@@ -37,11 +40,15 @@
                     <i class="bi bi-envelope"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="email" class="block form-control" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" />
-                    <x-input-label for="email" :value="__('Email')" />
+                    <input id="email" class="block form-control" type="email" name="email" :value="old('email')" required autofocus placeholder="Email" />
+                    <label for="email">
+                        Email
+                    </label>
                 </div>
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
+            <small>
+                @error('email')<p class=" text-danger ms-5"><i class="bi bi-exclamation-circle me-2"></i>{{$message}} </p> @enderror
+            </small>
 
             <!-- Password -->
             <div class="input-group loginInput">
@@ -49,25 +56,31 @@
                     <i class="bi bi-lock"></i>
                 </span>
                 <div class="form-floating">
-                    <x-text-input id="password" class="block form-control " type="password" name="password" required autocomplete="current-password" placeholder="Password" />
-                    <x-input-label for="password" :value="__('Mot de passe')" />
+                    <input id="password" class="block form-control " type="password" name="password" required placeholder="Password" />
+                    <label for="password">
+                        Mot de passe
+                    </label>
                 </div>
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
+            <small>
+                @error('password')<p class=" text-danger m-5"><i class="bi bi-exclamation-circle me-2"></i>{{$message}} </p>
+                @enderror
+            </small>
+
 
             <!-- Remember Me -->
             <div class="mt-3 d-flex flex-wrap justify-content-between rememberMe">
                 <div class="">
+                    <input id="remember_me" type="checkbox" class="rounded me-1" name="remember">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded" name="remember">
-                        <small class="ms-1 fs-10 text-gray-600">{{ __('Se souvenir de moi') }}</small>
+                        Se souvenir de moi
                     </label>
+                    {{-- <small class="ms-1 fs-10 text-gray-600">Se souvenir de moi</small> --}}
                 </div>
                 <div>
                     @if (Route::has('password.request'))
                         <a class="text-decoration-none" href="{{ route('password.request') }}">
-                            {{ __('Mot de passe oublié ?') }}
+                            Mot de passe oublié ?
                         </a>
                     @endif
                 </div>
@@ -75,18 +88,18 @@
 
             <div class="mt-5 d-flex justify-content-center buttonLogin">
                 <button type="submit" class="ms-3">
-                    {{ __('Connexion') }}
+                    Connecter
                 </button>
-                {{-- <x-primary-button class="ms-3">
-                    {{ __('Connexion') }}
-                </x-primary-button> --}}
             </div>
         </form>
-        {{-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> --}}
       </div>
     </div>
   </div>
 </div>
+
+@endsection
+
+
 {{--
     <form method="POST" action="{{ route('login') }}">
         @csrf

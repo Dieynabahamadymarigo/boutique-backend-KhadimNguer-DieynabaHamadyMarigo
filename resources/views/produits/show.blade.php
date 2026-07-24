@@ -3,47 +3,56 @@
 @section('title', $produit->nom)
 
 @section('content')
-    <h1>{{ $produit->nom }}</h1>
 
-    <dl>
-        <dt>Prix :</dt>
-        <dd>{{ number_format($produit->prix, 2, ',', '') }} €</dd>
+<div class="card-detail container p-3 mt-5">
+  <div class="card-body">
+    <div class="row ">
+        <h4 class="card-title col-md-6 text-secondary">
+            {{ $produit->nom }}
+        </h4>
+        <h4 class="card-title col-md-6">
+            {{ number_format($produit->prix, 2, ',', '') }} Frc
+        </h4>
+    </div>
+    <div class="card-text row mt-2">
+        <h6 class="col-md-6">Stock : {{ $produit->stock }} </h6>
+        <h6 class="col-md-6">Catégorie :
+            <a class="icon-link icon-link-hover text-decoration-none text-primary" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{ route('categories.show', $produit->categorie) }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+            </svg>
+                {{ $produit->categorie->nom ?? 'Aucune catégorie' }}
+            </a>
+        </h6>
+    </div>
+    <div class="card-text row mt-2">
+        <h6 class="col-md-6">Description : <br> {{ $produit->description ?: '😞 Aucune description disponible' }} </h6>
+        <h6 class="col-md-6">Acheteurs : <br>
+            @if($produit->acheteurs->isEmpty())
+            <p>😞 Aucun acheteur pour ce produit.</p>
+            @else
+                <ul>
+                    @foreach($produit->acheteurs as $acheteur)
+                        <li class="text-primary " style="list-style: none">
+                            <a class="icon-link icon-link-hover text-decoration-none text-primary" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);" href="{{route('acheteurs.show',$acheteur->id)}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"/>
+                            </svg>
+                                {{ $acheteur->nom }}
+                            </a>
+                            {{-- données de la table acheteur_produit --}}
+                            — {{ $acheteur->pivot->quantite }} unité(s)
+                            - {{ $acheteur->pivot->date_achat}}
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        </h6>
+    </div>
 
-        <dt>Stock :</dt>
-        <dd>{{ $produit->stock }}</dd>
-
-        <dt>Catégorie :</dt>
-        <dd>
-            <a href="{{ route('categories.show', $produit->categorie) }}">{{ $produit->categorie->nom ?? 'Aucune catégorie' }}</a>
-        </dd>
-
-        <dt>Description :</dt>
-        <dd>{{ $produit->description ?: 'Aucune description disponible' }}</dd> 
-    </dl>
-
-    {{-- Acheteurs ayant acheté ce produit --}}
-    <h2>Acheteurs</h2>
-    @if($produit->acheteurs->isEmpty())
-        <p>Aucun acheteur pour ce produit.</p>
-    @else
-        <ul>
-            @foreach($produit->acheteurs as $acheteur)
-                <li>
-                    <a href="{{route('acheteurs.show',$acheteur->id)}}">{{ $acheteur->nom }}</a>
-                    {{-- données de la table acheteur_produit --}}
-                    — {{ $acheteur->pivot->quantite }} unité(s)
-                    - {{ $acheteur->pivot->date_achat}}
-                </li>
-            @endforeach
-        </ul>
-    @endif
-    
-    <a href="{{route('produits.edit',$produit->id)}}">Modifier</a>
-    <a href="{{ route('produits.index') }}" class="btn btn-secondary">Retour à la liste</a>
-
-    <form action="{{route('produits.destroy',$produit)}}" method="post" onsubmit="return confirm('Supprimer ce produit ?')">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Supprimer</button>
-    </form>
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ route('produits.index') }}" class="btn btn-secondary">Retour à la liste</a>
+    </div>
+  </div>
+</div>
 @endsection

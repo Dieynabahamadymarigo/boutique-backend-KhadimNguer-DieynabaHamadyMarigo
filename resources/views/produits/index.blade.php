@@ -6,14 +6,16 @@
 
     <div class="page-title container mt-3 mb-3">
         <h1 class="text-primary"><i class="bi bi-file-text me-2"></i>Produits</h1>
+        @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin'])  )
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
         <i class="bi bi-plus me-2"></i> Ajouter
         </button>
+        @endif
     {{-- <a href="{{ route('produits.create') }}" class="btn btn-primary mb-3">Ajouter un produit</a> --}}
     </div>
     {{-- Vérification si la table est vide --}}
     @if($produits->isEmpty())
-        <p>😞 Aucun produit disponible.</p>
+        <p class="container fs-5 mt-3">😞 Aucun produit disponible.</p>
     @else
     <div class="table-responsive container">
         <table class="table table-hover table-bordered mx-auto">
@@ -38,6 +40,7 @@
                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailProduct{{$produit->id}}">
                                 <i class="bi bi-eye"></i>
                                 </button>
+                                @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin'])  )
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProduct{{$produit ->id}}">
                                  <i class="bi bi-pencil"></i>
                                 </button>
@@ -48,6 +51,7 @@
                                     @method('DELETE')
                                     <button type="button" class="btn btn-primary btn-delete" ><i class="bi bi-trash"></i></button>
                                 </form>
+                                @endif
                             </div>
                         </td>
                     </tr>

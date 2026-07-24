@@ -6,14 +6,17 @@
 
     <div class="page-title container mt-3 mb-3">
         <h1 class="text-primary"> <i class="bi bi-columns-gap me-2"></i> Catégories</h1>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategory">
-        <i class="bi bi-plus me-2"></i> Ajouter
-        </button>
+        {{-- Vérification --}}
+        @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin'])  )
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategory">
+            <i class="bi bi-plus me-2"></i> Ajouter
+            </button>
+        @endif
     </div>
 
     {{-- Vérification si la collection est vide --}}
     @if($categories->isEmpty())
-        <p>😞 Aucune catégorie disponible.</p>
+        <p class="container fs-5 mt-2">😞 Aucune catégorie disponible.</p>
     @else
     <div class="table-responsive container">
 
@@ -35,6 +38,7 @@
                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#detailCategory{{$categorie->id}}">
                                 <i class="bi bi-eye"></i>
                                 </button>
+                                @if(auth()->check() && in_array(auth()->user()->role, ['gestionnaire','admin']))
                                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateCategory{{$categorie ->id}}">
                                 <i class="bi bi-pencil"></i>
                                 </button>
@@ -44,6 +48,7 @@
                                     @method('DELETE')
                                     <button type="button" class="btn btn-primary btn-delete" ><i class="bi bi-trash"></i></button>
                                 </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
