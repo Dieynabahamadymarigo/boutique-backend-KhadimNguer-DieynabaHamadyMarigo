@@ -184,6 +184,7 @@
                 </dl>
 
                 {{-- Acheteurs ayant acheté ce produit --}}
+                @auth
                 <h2 class="text-secondary">Acheteurs</h2>
                 @if($produit->acheteurs->isEmpty())
                     <p>
@@ -205,6 +206,7 @@
                         @endforeach
                     </ul>
                 @endif
+                @endauth
 
             </div>
             <div class="modal-footer">
