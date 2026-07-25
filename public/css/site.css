@@ -68,10 +68,16 @@ body {
 .userConnected button{
     background-color: var(--white-color);
     border: none;
+    width: 100% !important;
 }
 .users a{
     font-size: 17px !important;
-    /* color: var(--white-color); */
+    padding: 0 0 !important;
+    color: #000 !important;
+    font-weight: normal !important;
+}
+.users a:active, .users a :hover{
+    border-radius: 0 !important;
 }
 .navbar-nav {
     gap: 20px;

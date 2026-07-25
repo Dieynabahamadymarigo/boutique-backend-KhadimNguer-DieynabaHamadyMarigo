@@ -106,19 +106,19 @@ class CategorieController extends Controller
         ]
     )]
 
-    public function show(Categorie $categorie): JsonResponse
+    public function show(Categorie $id): JsonResponse
     {
         // load
-        $categorie->load('produits');
+        $id->load('produits');
 
-        return response()->json($categorie);
+        return response()->json($id);
     }
 
     /**
      * Update the specified resource in storage.
      */
     #[OA\Put(
-        path: "/api/categories/{categorie}",
+        path: "/api/categories/{id}",
         summary: "Mettre à jour une catégorie",
         tags: ["Categories"],
         parameters: [
@@ -149,24 +149,23 @@ class CategorieController extends Controller
             ),
         ]
     )]
-    public function update(Request $request, Categorie $categorie): JsonResponse
+    public function update(Request $request, Categorie $id): JsonResponse
     {
-        // Verifie les données du formulaire avant insertion
         $validated = $request->validate([
-            'nom' => ['required', 'string', 'max:100', 'unique:categories,nom,' . $categorie->id],
+            'nom' => ['required', 'string', 'max:100', 'unique:categories,nom,' . $id->id],
             'description' => ['nullable', 'string'],
         ]);
 
-        $categorie->update($validated);
+        $id->update($validated);
 
-        return response()->json($categorie);
+        return response()->json($id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
     #[OA\Delete(
-        path: "/api/categories/{categorie}",
+        path: "/api/categories/{id}",
         summary: "Supprimer une catégorie",
         tags: ["Categories"],
         parameters: [
@@ -184,10 +183,10 @@ class CategorieController extends Controller
             ),
         ]
     )]
-    public function destroy(Categorie $categorie): JsonResponse
+    public function destroy(Categorie $id): JsonResponse
     {
         //
-        $categorie->delete();
+        $id->delete();
 
         return response()->json(['message' => 'Catégorie supprimée avec succès.']);
     }

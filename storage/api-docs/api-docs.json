@@ -12,6 +12,206 @@
         }
     ],
     "paths": {
+        "/api/acheteurs": {
+            "get": {
+                "tags": [
+                    "Acheteurs"
+                ],
+                "summary": "Listes des acheteurs",
+                "description": "Display a listing of the resource.",
+                "operationId": "ceb448e7363a1b4f5c03c3887b9d3b33",
+                "responses": {
+                    "200": {
+                        "description": "Liste des acheteurs"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Acheteurs"
+                ],
+                "summary": "Créer un acheteur",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "6b668a84a36dfc1380fc5739de88dcdc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "telephone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Acheteur crée"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            }
+        },
+        "/api/acheteurs/{id}": {
+            "get": {
+                "tags": [
+                    "Acheteurs"
+                ],
+                "summary": "Detail d'un acheteur",
+                "description": "Display the specified resource.",
+                "operationId": "0b4a046c39c051627363aa160b67ca12",
+                "parameters": [
+                    {
+                        "name": "acheteur",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Acheteur trouvé"
+                    },
+                    "404": {
+                        "description": "Acheteur non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Acheteurs"
+                ],
+                "summary": "Mettre à jour un acheteur",
+                "description": "Update the specified resource in storage.",
+                "operationId": "1b372799133848443208a82dd0578630",
+                "parameters": [
+                    {
+                        "name": "Acheteur",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "email"
+                                    },
+                                    "telephone": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Acheteur mise à jour"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            }
+        },
+        "/api/acheteurs/{acheteur}": {
+            "delete": {
+                "tags": [
+                    "Acheteu\n    rs"
+                ],
+                "summary": "Supprimer un acheteur",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "4bdb3b53d1f2bc34d5f2d236c7922237",
+                "parameters": [
+                    {
+                        "name": "acheteur",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Acheteur supprimé"
+                    }
+                }
+            }
+        },
+        "/api/acheteurs/{id}/acheter": {
+            "post": {
+                "tags": [
+                    "Acheteurs"
+                ],
+                "summary": "Enregistrer un achat",
+                "operationId": "854d078e310f389e27dc8905decc67e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "produit_id",
+                                    "quantite",
+                                    "date_achat"
+                                ],
+                                "properties": {
+                                    "produit_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantite": {
+                                        "type": "integer"
+                                    },
+                                    "date_achat": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Achat enregistré"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            }
+        },
         "/api/categories": {
             "get": {
                 "tags": [
@@ -92,14 +292,16 @@
                         "description": "Catégorie non trouvée"
                     }
                 }
-            },
+            }
+        },
+        "/api/categories/{id}": {
             "put": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Mettre à jour une catégorie",
                 "description": "Update the specified resource in storage.",
-                "operationId": "f0ae08633275192b3fe68efa358b9abd",
+                "operationId": "2eaa317f2ea8871f48bcecdfe95e6a83",
                 "parameters": [
                     {
                         "name": "categorie",
@@ -143,7 +345,7 @@
                 ],
                 "summary": "Supprimer une catégorie",
                 "description": "Remove the specified resource from storage.",
-                "operationId": "21fd49657c7df227ca3dd53c5371f438",
+                "operationId": "21702b2a8b7abdf7a40668fdcdf63a16",
                 "parameters": [
                     {
                         "name": "categorie",
@@ -160,12 +362,192 @@
                     }
                 }
             }
+        },
+        "/api/produits": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Listes des produits",
+                "description": "Display a listing of the resource.",
+                "operationId": "c7e27af70c1d33e37f767417e0880e68",
+                "responses": {
+                    "200": {
+                        "description": "Liste des produits"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Créer un produit",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "1dcf5bbc5058dd5e52384c289a96ba68",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom",
+                                    "prix",
+                                    "stock",
+                                    "categories_id"
+                                ],
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "prix": {
+                                        "type": "numeric"
+                                    },
+                                    "stock": {
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "categories_id": {
+                                        "type": "exists:categories,id"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Produit crée"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            }
+        },
+        "/api/produits/{id}": {
+            "get": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Detail d'un produit",
+                "description": "Display the specified resource.",
+                "operationId": "bd48b3dd26740d05293134d4155f41c1",
+                "parameters": [
+                    {
+                        "name": "produit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produit trouvé"
+                    },
+                    "404": {
+                        "description": "Produit non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Mettre à jour un produit",
+                "description": "Update the specified resource in storage.",
+                "operationId": "db28bcb38f8bf8010cca584f0445eccd",
+                "parameters": [
+                    {
+                        "name": "Produit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nom": {
+                                        "type": "string"
+                                    },
+                                    "prix": {
+                                        "type": "numeric"
+                                    },
+                                    "stock": {
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "categories_id": {
+                                        "type": "exists:categories,id"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Produit mise à jour"
+                    },
+                    "422": {
+                        "description": "Erreurs de validation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Produits"
+                ],
+                "summary": "Supprimer un produit",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "8766477c306a0545db7a9060ff0c6ca1",
+                "parameters": [
+                    {
+                        "name": "produit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produit supprimé"
+                    }
+                }
+            }
         }
     },
     "tags": [
         {
+            "name": "Acheteurs",
+            "description": "Gestion des acheteurs et achats"
+        },
+        {
             "name": "Categories",
             "description": "Gestion des catégories de produits"
+        },
+        {
+            "name": "Produits",
+            "description": "Gestion des produits"
+        },
+        {
+            "name": "Acheteu\n    rs",
+            "description": "Acheteu\n    rs"
         }
     ]
 }
