@@ -29,7 +29,7 @@
         @auth
         <li class="nav-item dropdown userConnected">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{Auth::user()->name}}
+            {{Auth::user()->role}}
           </a>
           <ul class="dropdown-menu">
             <li>
