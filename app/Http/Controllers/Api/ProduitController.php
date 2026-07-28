@@ -79,7 +79,7 @@ class ProduitController extends Controller
     #[OA\Get(path:'/api/produits/{id}', summary:'Detail d\'un produit', tags:['Produits'],
         parameters: [
             new OA\Parameter(
-                name: "produit",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -110,7 +110,7 @@ class ProduitController extends Controller
     #[OA\Put(path: '/api/produits/{id}', summary: 'Mettre à jour un produit', tags: ['Produits'],
         parameters: [
             new OA\Parameter(
-                name: "Produit",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -161,7 +161,7 @@ class ProduitController extends Controller
     #[OA\Delete(path: '/api/produits/{id}', summary: 'Supprimer un produit', tags: ['Produits'],
         parameters: [
             new OA\Parameter(
-                name: "produit",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),

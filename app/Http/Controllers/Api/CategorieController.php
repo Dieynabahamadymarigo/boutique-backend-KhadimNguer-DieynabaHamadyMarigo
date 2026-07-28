@@ -83,12 +83,12 @@ class CategorieController extends Controller
      * Display the specified resource.
      */
     #[OA\Get(
-        path: "/api/categories/{categorie}",
+        path: "/api/categories/{id}",
         summary: "Détails d'une catégorie avec ses produits",
         tags: ["Categories"],
         parameters: [
             new OA\Parameter(
-                name: "categorie",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -123,7 +123,7 @@ class CategorieController extends Controller
         tags: ["Categories"],
         parameters: [
             new OA\Parameter(
-                name: "categorie",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -170,7 +170,7 @@ class CategorieController extends Controller
         tags: ["Categories"],
         parameters: [
             new OA\Parameter(
-                name: "categorie",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),

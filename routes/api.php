@@ -18,11 +18,11 @@ Route::get('/categories', [CategorieController::class, 'index'])->name('api.cate
 // Créer une nouvelle catégorie
 Route::post('/categories', [CategorieController::class, 'store'])->name('api.categories.store');
 // Afficher le détail d'une catégorie
-Route::get('/categories/{categorie}', [CategorieController::class, 'show'])->name('api.categories.show');
+Route::get('/categories/{id}', [CategorieController::class, 'show'])->name('api.categories.show');
 // Modifier une catégorie existante
-Route::put('/categories/{categorie}', [CategorieController::class, 'update'])->name('api.categories.update');
+Route::put('/categories/{id}', [CategorieController::class, 'update'])->name('api.categories.update');
 // Supprimer une catégorie
-Route::delete('/categories/{categorie}', [CategorieController::class, 'destroy'])->name('api.categories.destroy');
+Route::delete('/categories/{id}', [CategorieController::class, 'destroy'])->name('api.categories.destroy');
 
 // Product
 Route::get('/produits', [ProduitController::class, 'index'])->name('api.produits.index');

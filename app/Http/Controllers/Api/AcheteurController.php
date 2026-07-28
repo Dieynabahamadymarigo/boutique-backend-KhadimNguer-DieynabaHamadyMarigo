@@ -85,7 +85,7 @@ class AcheteurController extends Controller
         tags: ['Acheteurs'],
         parameters: [
             new OA\Parameter(
-                name: "acheteur",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -120,7 +120,7 @@ class AcheteurController extends Controller
         tags: ['Acheteurs'],
         parameters: [
             new OA\Parameter(
-                name: "Acheteur",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
@@ -164,11 +164,10 @@ class AcheteurController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    #[OA\Delete(path: '/api/acheteurs/{acheteur}', summary: 'Supprimer un acheteur', tags: ['Acheteu
-    rs'],
+    #[OA\Delete(path: '/api/acheteurs/{acheteur}', summary: 'Supprimer un acheteur', tags: ['Acheteurs'],
         parameters: [
             new OA\Parameter(
-                name: "acheteur",
+                name: "id",
                 in: "path",
                 required: true,
                 schema: new OA\Schema(type: "integer"),
