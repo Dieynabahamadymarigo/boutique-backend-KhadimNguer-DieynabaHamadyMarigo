@@ -7,52 +7,90 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Boutique — Backend (Laravel)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Présentation /
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ce projet est le backend d'une application de gestion de boutique. Il permet d’administrer des catégories, des produits et des acheteurs.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Il a été réalisé dans le cadre de l'examen CCP 2026, avec le formateur M. Tine.
 
-## Learning Laravel
+C'est une application qui permet de :
+    . Gérer les catégories (qui contientent plusieurs produits.)
+    . Gérer les produits (Un produit appartient à une catégorie)
+    . Gérer les acheteurs (Un acheteur peut acheter plusieurs produits ; un produit peut être acheté par plusieurs
+    acheteurs.)
+    . Gérer les achats (La fiche d’un acheteur affiche l’historique de ses achats)
+    . Les utilisateurs selon leur rôle (Employe, Gestionnaire et Admin)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    Le backend est développé avec Laravel et expose une API REST utilisée par une application React.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Technologies utilisées:
 
-## Agentic Development
+    Laravel
+    PHP
+    MySQL
+    Swagger
+    API RESRT
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
+## Comment installer le projet ?
+
+Cloner le projet
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone "https://github.com/Dieynabahamadymarigo/boutique-backend-KhadimNguer-DieynabaHamadyMarigo.git"
+```
+Entre dans le projet
+```bash
+cd boutique
+```
+Installer les dépendances
+```bash
+composer install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Configurer la base données ddans le fichier .env
+Exécuter les migrations et les données de démonstration
 
-## Contributing
+```bash
+php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Lancer le serveur
+```bash
+composer run dev ou php artisan serve
+```
 
-## Code of Conduct
+## Comptes de test
+Rôle         Email              Mot de passe
+Admin => admin@boutique.com => password123
+Gestionnaire=>gestionnaire@boutique.com=>password123
+Employe=>employe@boutique.com=>password123
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Fonctionnalités
 
-## Security Vulnerabilities
+=> Authentification
+=> Gestion des catégories
+=> Gestion des produits
+=> Gestion des acheteurs
+=> Enregistrer les achats
+=> Gestion des rôles
+=> API REST
+=> Documentation Swagger
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## API
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+L'API est disponible à l'adresse :
+
+```bash
+http://127.0.0.1:8000/api/documentation#/
+```
+La documentation Swagger est accessible depuis l'application.
+
+## Auteur
+
+Projet réalisé par :
+HAMADY MARIGO Dieynaba
+NGUER Khadim
