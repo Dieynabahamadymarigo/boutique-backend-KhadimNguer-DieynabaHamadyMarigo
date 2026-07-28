@@ -26,7 +26,7 @@
 
     <div class="row row-cols-2 row-cols-md-3 mt-4 mb-5 mx-auto justify-content-evenly group-cards">
         <div class="card">
-        <a href="{{route('categories.index')}}" >
+            <a href="{{route('categories.index')}}" >
             <div class="card-body text-center">
                 <h3 class="card-title text-primary"><i class="bi bi-columns-gap me-2"></i>Catégories</h3>
                 <p class="card-text">

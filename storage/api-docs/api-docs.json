@@ -78,7 +78,7 @@
                 "operationId": "0b4a046c39c051627363aa160b67ca12",
                 "parameters": [
                     {
-                        "name": "acheteur",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -104,7 +104,7 @@
                 "operationId": "1b372799133848443208a82dd0578630",
                 "parameters": [
                     {
-                        "name": "Acheteur",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -146,14 +146,14 @@
         "/api/acheteurs/{acheteur}": {
             "delete": {
                 "tags": [
-                    "Acheteu\n    rs"
+                    "Acheteurs"
                 ],
                 "summary": "Supprimer un acheteur",
                 "description": "Remove the specified resource from storage.",
                 "operationId": "4bdb3b53d1f2bc34d5f2d236c7922237",
                 "parameters": [
                     {
-                        "name": "acheteur",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -266,17 +266,17 @@
                 }
             }
         },
-        "/api/categories/{categorie}": {
+        "/api/categories/{id}": {
             "get": {
                 "tags": [
                     "Categories"
                 ],
                 "summary": "Détails d'une catégorie avec ses produits",
                 "description": "Display the specified resource.",
-                "operationId": "204f07a46403659f3e16a6e06e95dcf1",
+                "operationId": "02f8d50a129f2d0b43f583dfe51c9cc5",
                 "parameters": [
                     {
-                        "name": "categorie",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -292,9 +292,7 @@
                         "description": "Catégorie non trouvée"
                     }
                 }
-            }
-        },
-        "/api/categories/{id}": {
+            },
             "put": {
                 "tags": [
                     "Categories"
@@ -304,7 +302,7 @@
                 "operationId": "2eaa317f2ea8871f48bcecdfe95e6a83",
                 "parameters": [
                     {
-                        "name": "categorie",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -348,7 +346,7 @@
                 "operationId": "21702b2a8b7abdf7a40668fdcdf63a16",
                 "parameters": [
                     {
-                        "name": "categorie",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -437,7 +435,7 @@
                 "operationId": "bd48b3dd26740d05293134d4155f41c1",
                 "parameters": [
                     {
-                        "name": "produit",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -463,7 +461,7 @@
                 "operationId": "db28bcb38f8bf8010cca584f0445eccd",
                 "parameters": [
                     {
-                        "name": "Produit",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -516,7 +514,7 @@
                 "operationId": "8766477c306a0545db7a9060ff0c6ca1",
                 "parameters": [
                     {
-                        "name": "produit",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -544,10 +542,6 @@
         {
             "name": "Produits",
             "description": "Gestion des produits"
-        },
-        {
-            "name": "Acheteu\n    rs",
-            "description": "Acheteu\n    rs"
         }
     ]
 }
