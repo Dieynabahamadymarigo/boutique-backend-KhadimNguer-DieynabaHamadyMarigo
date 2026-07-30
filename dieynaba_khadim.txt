@@ -1,0 +1,96 @@
+Gestion de Boutique - Présentation du projet
+
+Membres du binôme
+HAMADY MARIGO Dieynaba
+NGUER Khadim
+
+1. Présentation des vues de l’application Frontend (React)
+
+a) Page d’accueil
+Cette page présente l’application et permet d’accéder aux différentes fonctionnalités à travers le navigateur. On a une bannière au dessous du navigateur et ensuite les différentes catégories.
+b) Liste des produits
+Cette page affiche tous les produits avec leur nom, leur prix, leur stock et leur catégorie. Avec une icone affiche les details du produit via un Model
+c) Liste des catégories
+Cette page affiche toutes les catégories disponibles.
+L’application est responsive et peut être utilisée sur ordinateur et sur téléphone.
+
+2. Documentation Swagger (Backend)
+Le backend possède une documentation Swagger qui permet de tester facilement l’API.
+Elle présente les différentes routes disponibles, les méthodes HTTP (GET, POST, PUT, DELETE), les paramètres attendus et les réponses renvoyées par le serveur.
+Les principales routes sont :
+a. Catégories
+* GET /api/categories
+* POST /api/categories
+* PUT /api/categories/{id}
+* DELETE /api/categories/{id}
+
+b. Produits
+* GET /api/produits
+* POST /api/produits
+* PUT /api/produits/{id}
+* DELETE /api/produits/{id}
+
+c. Acheteurs
+* GET /api/acheteurs
+* POST /api/acheteurs
+* PUT /api/acheteurs/{id}
+* DELETE /api/acheteurs/{id}
+* POST /api/acheteurs/{id}/acheter
+Swagger permet de tester toutes ces routes directement depuis le navigateur sans utiliser un autre logiciel.
+
+3. Les vues selon les rôles
+   Utilisateur non connecté
+* Consulter la page d’accueil
+* Consulter le catalogue des produits (lecture seule)
+
+   Employé
+* Consulter la page d’accueil
+* Consulter les categories
+* Consulter les produits
+* Consulter les acheteurs
+* Enregistrer un achat
+
+Gestionnaire
+* Consulter la page d’accueil
+* Consulter les categories
+* Ajouter une catégorie
+* Modifier une catégorie
+* Supprimer une catégorie
+* Consulter les produits
+* Ajouter un produit
+* Modifier un produit
+* Supprimer un produit
+* Consulter les acheteurs
+* Ajouter un acheteur
+* Modifier un acheteur
+* Supprimer un acheteur
+* Enregistrer un achat
+
+Administrateur
+* Consulter la page d’accueil
+* Consulter les categories
+* Ajouter une catégorie
+* Modifier une catégorie
+* Supprimer une catégorie
+* Consulter les produits
+* Ajouter un produit
+* Modifier un produit
+* Supprimer un produit
+* Consulter les acheteurs
+* Ajouter un acheteur
+* Modifier un acheteur
+* Supprimer un acheteur
+* Enregistrer un achat
+* Gérer les utilisateurs
+* Modifier les rôles des utilisateurs
+
+4. Liens GitHub
+Backend :
+https://github.com/Dieynabahamadymarigo/boutique-backend-KhadimNguer-DieynabaHamadyMarigo.git 
+Frontend :
+https://github.com/Dieynabahamadymarigo/boutique-frontend-KhadimNguer-DieynabaHamadyMarigo.git
+
+5. Remarques
+Le backend est développé avec Laravel et MySQL.
+Le frontend est développé avec React (Vite).
+Les deux applications communiquent grâce à une API REST documentée avec Swagger.
