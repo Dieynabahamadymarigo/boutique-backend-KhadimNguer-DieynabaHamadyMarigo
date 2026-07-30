@@ -1,61 +1,66 @@
-Gestion de Boutique - Présentation du projet
+Gestion de Boutique - Prï¿½sentation du projet
 
-Membres du binôme
+Membres du binï¿½me
 HAMADY MARIGO Dieynaba
 NGUER Khadim
 
-1. Présentation des vues de l’application Frontend (React)
+1. Prï¿½sentation des vues de lï¿½application Frontend (React)
 
-a) Page d’accueil
-Cette page présente l’application et permet d’accéder aux différentes fonctionnalités à travers le navigateur. On a une bannière au dessous du navigateur et ensuite les différentes catégories.
+a) Page dï¿½accueil
+Cette page prï¿½sente lï¿½application et permet dï¿½accï¿½der aux diffï¿½rentes fonctionnalitï¿½s ï¿½ travers le navigateur. On a une banniï¿½re au dessous du navigateur et ensuite les diffï¿½rentes catï¿½gories.
 b) Liste des produits
-Cette page affiche tous les produits avec leur nom, leur prix, leur stock et leur catégorie. Avec une icone affiche les details du produit via un Model
-c) Liste des catégories
-Cette page affiche toutes les catégories disponibles.
-L’application est responsive et peut être utilisée sur ordinateur et sur téléphone.
+Cette page affiche tous les produits avec leur nom, leur prix, leur stock et leur catï¿½gorie. Avec une icone qui affiche leurs details via un Model
+c) Liste des catï¿½gories
+Cette page affiche toutes les catï¿½gories disponibles.
+
+Lï¿½application est responsive et peut ï¿½tre utilisï¿½e sur ordinateur et sur tï¿½lï¿½phone.
 
 2. Documentation Swagger (Backend)
-Le backend possède une documentation Swagger qui permet de tester facilement l’API.
-Elle présente les différentes routes disponibles, les méthodes HTTP (GET, POST, PUT, DELETE), les paramètres attendus et les réponses renvoyées par le serveur.
+Le backend possï¿½de une documentation Swagger qui permet de tester facilement lï¿½API.
+Elle prï¿½sente les diffï¿½rentes routes disponibles, les mï¿½thodes HTTP (GET, POST, PUT, DELETE), les paramï¿½tres attendus et les rï¿½ponses renvoyï¿½es par le serveur.
 Les principales routes sont :
-a. Catégories
-* GET /api/categories
-* POST /api/categories
-* PUT /api/categories/{id}
-* DELETE /api/categories/{id}
+a. Catï¿½gories
+* GET /api/categories (Lister)
+* POST /api/categories (Creer)
+* Get/api/categories (detail)
+* PUT /api/categories/{id} (Modifier)
+* DELETE /api/categories/{id} (Supprimer)
 
 b. Produits
-* GET /api/produits
-* POST /api/produits
-* PUT /api/produits/{id}
-* DELETE /api/produits/{id}
+* GET /api/produits (Lister)
+* POST /api/produits (Creer)
+* Get/api/produits (detail)
+* PUT /api/produits/{id} (Modifier)
+* DELETE /api/produits/{id} (Supprimer)
 
 c. Acheteurs
-* GET /api/acheteurs
-* POST /api/acheteurs
-* PUT /api/acheteurs/{id}
-* DELETE /api/acheteurs/{id}
+* GET /api/acheteurs (Lister)
+* POST /api/acheteurs (Creer)
+* Get/api/acheteurs (detail)
+* PUT /api/acheteurs/{id} (Modifier)
+* DELETE /api/acheteurs/{id} (Supprimer)
 * POST /api/acheteurs/{id}/acheter
+
 Swagger permet de tester toutes ces routes directement depuis le navigateur sans utiliser un autre logiciel.
 
-3. Les vues selon les rôles
-   Utilisateur non connecté
-* Consulter la page d’accueil
+3. Les vues selon les rï¿½les
+   Utilisateur non connectï¿½
+* Consulter la page dï¿½accueil
 * Consulter le catalogue des produits (lecture seule)
 
-   Employé
-* Consulter la page d’accueil
+   Employï¿½
+* Consulter la page dï¿½accueil
 * Consulter les categories
 * Consulter les produits
 * Consulter les acheteurs
 * Enregistrer un achat
 
 Gestionnaire
-* Consulter la page d’accueil
+* Consulter la page dï¿½accueil
 * Consulter les categories
-* Ajouter une catégorie
-* Modifier une catégorie
-* Supprimer une catégorie
+* Ajouter une catï¿½gorie
+* Modifier une catï¿½gorie
+* Supprimer une catï¿½gorie
 * Consulter les produits
 * Ajouter un produit
 * Modifier un produit
@@ -67,11 +72,11 @@ Gestionnaire
 * Enregistrer un achat
 
 Administrateur
-* Consulter la page d’accueil
+* Consulter la page dï¿½accueil
 * Consulter les categories
-* Ajouter une catégorie
-* Modifier une catégorie
-* Supprimer une catégorie
+* Ajouter une catï¿½gorie
+* Modifier une catï¿½gorie
+* Supprimer une catï¿½gorie
 * Consulter les produits
 * Ajouter un produit
 * Modifier un produit
@@ -81,16 +86,16 @@ Administrateur
 * Modifier un acheteur
 * Supprimer un acheteur
 * Enregistrer un achat
-* Gérer les utilisateurs
-* Modifier les rôles des utilisateurs
+* Gï¿½rer les utilisateurs
+* Modifier les rï¿½les des utilisateurs
 
 4. Liens GitHub
 Backend :
-https://github.com/Dieynabahamadymarigo/boutique-backend-KhadimNguer-DieynabaHamadyMarigo.git 
-Frontend :
+https://github.com/Dieynabahamadymarigo/boutique-backend-KhadimNguer-DieynabaHamadyMarigo.git
+Frontendï¿½:
 https://github.com/Dieynabahamadymarigo/boutique-frontend-KhadimNguer-DieynabaHamadyMarigo.git
 
 5. Remarques
-Le backend est développé avec Laravel et MySQL.
-Le frontend est développé avec React (Vite).
-Les deux applications communiquent grâce à une API REST documentée avec Swagger.
+Le backend est dï¿½veloppï¿½ avec Laravel et MySQL.
+Le frontend est dï¿½veloppï¿½ avec React (Vite).
+Les deux applications communiquent grï¿½ce ï¿½ une API REST documentï¿½e avec Swagger.
